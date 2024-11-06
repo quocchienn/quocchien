@@ -1,0 +1,40 @@
+#!name=Picsat VSCO Aligt Motino
+#!desc=By: Quoc Chien
+
+[General]
+bypass-system = true
+skip-proxy = *.local, *.crashlytics.com
+tun-excluded-routes = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12
+
+[MITM]
+hostname = api.revenuecat.com, buy.itunes.apple.com, api.picsart.com, api-account.kinemasters.com, us-central1-alight-creative.cloudfunctions.net, api.adapty.io, carrotweather.herokuapp.com, lapi.photomath.net, lcs-mobile-cops.adobe.io, order.creativeappnow.com, api.mwm-users.com, us-central1-muslim-pro-app.cloudfunctions.net, api.gptkeyboard.app, prod.studysmarter.de, api.qonversion.io, api.blinkist.com, subscription.grammarly.com, api.esound.app, api.purchasely.io, www.tradingview.com
+
+[Script]
+
+http-response ^https://api\.revenuecat\.com/.+/(receipts$|subscribers/[^/]+$) script-path=https://N9dev-dev.github.io/SL/scripts/ARC.js, requires-body=true, timeout=5, tag=iSteal
+http-response https://api.adapty.io/api/v1/sdk/analytics/profiles script-path=https://N9dev-dev.github.io/SL/scripts/ADPTY.js, requires-body=true, timeout=5, tag=Im Him
+http-response ^https://api.tidal.com/v1/users/(\d+)/subscription\?countryCode=([A-Z]{2})&deviceType=[A-Z]+&locale=[a-z]+&platform=[A-Z]+ script-path=https://N9dev-dev.github.io/SL/scripts/TIDAL.js, requires-body=true, timeout=5, tag=TIDAL
+http-response https://order.creativeappnow.com/iap/receipt script-path=https://N9dev-dev.github.io/SL/scripts/Facemoji.js, requires-body=true, timeout=5, tag=Im Dev
+http-response ^https://license.pdfexpert.com/api/2.0/(calendarslite|pdfexpert6|documents)/subscription/(refresh|check) script-path=https://N9dev-dev.github.io/SL/scripts/Documents.js, requires-body=true, timeout=5, tag=Readdle
+http-response ^https://buy.itunes.apple.com/verifyReceipt script-path=https://N9dev-dev.github.io/SL/scripts/BDIts.js, requires-body=true, timeout=5, tag=Im FLUFFY
+http-response us-central1-muslim-pro-app.cloudfunctions.net/GetUserPremiumInfo script-path=https://N9dev-dev.github.io/SL/scripts/MuslimPro.js, requires-body=true, timeout=5, tag=Ramadan Kareem
+http-response ^https://subscription.grammarly.com/api/v1/subscription$ script-path=https://n9dev-dev.github.io/SL/scripts/Grammarly.js, requires-body=true, timeout=5, tag=Grammarly
+http-response api.esound.app/account script-path=https://n9dev-dev.github.io/SL/scripts/eSound.js, requires-body=true, timeout=5, tag=eSound
+http-response https://api.purchasely.io/paab/user_purchases script-path=https://n9dev-dev.github.io/SL/scripts/Tezza.js, requires-body=true, timeout=5, tag=Tezza
+http-response api.blinkist.com/v4/me/access script-path=https://n9dev-dev.github.io/SL/scripts/Blinkist.js, requires-body=true, timeout=5, tag=Blinkist
+http-response api.gptkeyboard.app/api/v1/user/self script-path=https://N9dev-dev.github.io/SL/scripts/AnswerAI.js, requires-body=true, timeout=5, tag=AnswerAI
+http-response prod.studysmarter.de/payments/info script-path=https://N9dev-dev.github.io/SL/scripts/Vaia.js, requires-body=true, timeout=5, tag=Vaia
+http-response api.qonversion.io/v1/user/init script-path=https://N9dev-dev.github.io/SL/scripts/QNVRN.js, requires-body=true, timeout=5, tag=QONV
+http-response https://api.mwm-users.com/me/features script-path=https://N9dev-dev.github.io/SL/scripts/edjingMix.js, requires-body=true, timeout=5, tag=DJ
+http-response https://api-fra.vivacut.com/api/rest/commerce/integrate/vip/perform script-path=https://N9dev-dev.github.io/SL/scripts/VivaCut.js, requires-body=true, timeout=5, tag=VivaCut
+http-response https://carrotweather.herokuapp.com/parse/functions/findSubscriptionsForUserId script-path=https://N9dev-dev.github.io/SL/scripts/Carrot.js, requires-body=true, timeout=5, tag=Carrot Weather
+http-response https://lapi.photomath.net/v5/me script-path=https://N9dev-dev.github.io/SL/scripts/Photomath.js, requires-body=true, timeout=5, tag=Photomath
+http-request https://lcs-mobile-cops.adobe.io/mobiles/access_profile/v3 script-path=https://N9dev-dev.github.io/SL/scripts/Lightroom.js, requires-body=true, timeout=5, tag=Lightroom
+http-request ^https://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) script-path=https://N9dev-dev.github.io/SL/scripts/VSCO.js, requires-body=true, timeout=5, tag=VSCO
+http-response https://api-account.kinemasters.com/v2/user/subscribe script-path=https://N9dev-dev.github.io/SL/scripts/KineMaster.js, requires-body=true, timeout=5, tag=KineMaster
+http-request https://api.picsart.com/gw-v2/shop/subscription/apple/purchases script-path=https://N9dev-dev.github.io/SL/scripts/PicsArt.js, requires-body=true, timeout=5, tag=PicsArt
+http-response https://us-central1-alight-creative.cloudfunctions.net/getAccountStatusAndLicenses script-path=https://N9dev-dev.github.io/SL/scripts/AlightMotion.js, requires-body=true, timeout=5, tag=Alight Motion
+http-response api.sandbox.love/accounts/current script-path=https://N9dev-dev.github.io/SL/scripts/SandBox.js, requires-body=true, timeout=5, tag=Sandbox Pixel Art
+http-response www.tradingview.com/order/apple/device/ script-path=https://N9dev-dev.github.io/SL/scripts/TradingViewDeviceReceipt.js, requires-body=true, timeout=5, tag=TradingView1
+http-response www.tradingview.com/order/apple/receipt/ script-path=https://N9dev-dev.github.io/SL/scripts/TradeViewAppleReceipt.js, requires-body=true, timeout=5, tag=TradingView2
+http-response www.tradingview.com/api/v1/user/profile/me/ script-path=https://N9dev-dev.github.io/SL/scripts/TradingViewProf.js, requires-body=true, timeout=5, tag=TradingView3
