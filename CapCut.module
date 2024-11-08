@@ -1,0 +1,23 @@
+#!name=CapCutPro
+#!desc=By: QuocChien 
+
+[General]
+bypass-system = true
+skip-proxy = *.local, *.crashlytics.com
+tun-excluded-routes = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12
+
+[MITM]
+hostname = api-capcut.bytedance.com, openapi-vcap.cut.com, iap-sandbox.apple.com, buy.itunes.apple.com
+
+[Script]
+# Mở khóa CapCut Pro
+http-response ^https:\/\/api-capcut\.bytedance\.com\/v\d\/user\/subscription\/status script-path=https://raw.githubusercontent.com/quocchienn/co_tien_khong/refs/heads/Module/CapCutPro.js, requires-body=true, timeout=5, tag=Unlock CapCut Pro
+
+# Chặn kiểm tra bản quyền
+http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://raw.githubusercontent.com/quocchienn/co_tien_khong/refs/heads/Module/BlockReceipt.js, requires-body=true, timeout=5, tag=Block iTunes Receipt
+
+# Mở khóa tính năng Premium
+http-response ^https:\/\/openapi-vcap\.cut\.com\/v\d\/premium\/check script-path=https://raw.githubusercontent.com/quocchienn/co_tien_khong/refs/heads/Module/CapCutPremium.js, requires-body=true, timeout=5, tag=Unlock Premium Features
+
+# Chặn kiểm tra PC (Máy tính)
+http-request ^https:\/\/api-capcut\.bytedance\.com\/v\d\/pc\/check script-path=https://raw.githubusercontent.com/quocchienn/co_tien_khong/refs/heads/Module/BlockPCCheck.js, requires-body=true, timeout=5, tag=Block PC Check
