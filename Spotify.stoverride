@@ -1,0 +1,36 @@
+name: |-
+  Spotify Pro
+desc: |-
+ Spotify Premium
+icon: |-
+  https://raw.githubusercontent.com/quocchienn/quocchien/refs/heads/Quocchien_Module/3FBB33AB-A7A3-4EFD-85C3-45653C4255E6.webp
+
+http:
+
+  mitm:
+    - "spclient.wg.spotify.com"
+
+  header-rewrite:
+    - >-
+      ^https:\/\/spclient\.wg\.spotify\.com\/user-customization-service\/v1\/customize$ request-del if-none-match
+
+  script:
+    - match: ^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/
+      name: "spotify-json_10"
+      type: request
+      require-body: false
+
+    - match: ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$
+      name: "spotify-proto_11"
+      type: response
+      require-body: true
+      max-size: 0
+      binary-mode: true
+
+script-providers:
+  "spotify-json_10":
+    url: https://raw.githubusercontent.com/quocchienn/quocchien/refs/heads/Quocchien_Module/spotify-json.js
+    interval: 86400
+  "spotify-proto_11":
+    url: https://raw.githubusercontent.com/quocchienn/quocchien/refs/heads/Quocchien_Module/spotify-proto.js
+    interval: 86400
