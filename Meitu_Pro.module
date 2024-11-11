@@ -1,0 +1,16 @@
+# Module Meitu Pro Unlock - Quốc Chiến
+# Hỗ trợ phiên bản 10.22.5
+# Tham Gia Nhóm Telegram Để Được Hỗ Trợ: https://t.me/shadowrocketunlockproapps
+
+#!name=Meitu Pro
+#!desc=By: QuocChien 🙄
+
+[General]
+skip-proxy = 127.0.0.1, ::1
+bypass-system = true
+
+[MITM]
+hostname = *.meitu.com, *.meipai.com, *.meitudata.com
+
+[Script]
+http-response ^https:\/\/api\.meitu\.com\/user\/v\d+\/subscription\/status script-path=https://raw.githubusercontent.com/quocchienn/quocchien/refs/heads/Quocchien_Module/meitu_pro.js, requires-body=true, max-size=0
